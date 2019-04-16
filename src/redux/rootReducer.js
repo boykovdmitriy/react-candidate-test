@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux';
-import {indexRepositoryIssuesReducer, indexAssignedPersonsReducer} from './issues';
+import {indexChannelsReducer} from './channels';
 
 export default combineReducers({
-  indexAssignedPersons: indexAssignedPersonsReducer,
-  indexRepositoryIssues: indexRepositoryIssuesReducer,
+  indexChannelsResponse: indexChannelsReducer,
 });

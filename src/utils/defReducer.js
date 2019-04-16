@@ -1,36 +1,32 @@
+import {get} from 'lodash';
+
 const initialState = {
   error: '',
   isError: false,
   isLoading: false,
   isLoaded: false,
-  data: [],
-  params: {}
+  data: {},
 };
 
 const doNothing = (data) => data;
 
-export function defPaginatableReducer(actions, {
-  calculateTotal = () => {},
-  dataCompensate = doNothing
-}) {
+export function defReducer(actions, config) {
   return (state = initialState, action) => {
     switch (action.type) {
       case actions.REQUEST:
-        const {payload: {params}} = action;
         return {
           ...state,
-          data: params.page === 1 ? [] : state.data,
-          params: params,
+          data: {},
           isError: false,
           isLoading: true,
           isLoaded: false,
         };
       case actions.SUCCESS:
-        const data = dataCompensate(action.payload.data);
+        const compensate = get(config, 'compensate', doNothing);
+        const data = compensate(action.payload.data);
         return {
           ...state,
-          data: [...state.data, ...data],
-          totalPages: calculateTotal(state, action),
+          data: data,
           isError: false,
           isLoading: false,
           isLoaded: true,
@@ -41,6 +37,7 @@ export function defPaginatableReducer(actions, {
           isError: true,
           error: action.payload,
           isLoading: false,
+          isLoaded: false,
         };
       default:
         return state;
