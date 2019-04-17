@@ -30,26 +30,21 @@ module.exports = {
       {test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/},
       {
         test: /\.css$/,
-        include: [path.resolve(__dirname, 'src', 'app')],
-        use: [
-          {
-            loader: 'style-loader'
-          }, {
-            loader: 'css-loader',
-            query: {
-              modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
-            }
-          }
-        ]
+        include: [path.resolve(__dirname, 'src', 'styles'), path.resolve(__dirname, 'node_modules')],
+        use: ['style-loader', 'css-loader']
       }, {
         test: /\.css$/,
-        include: [path.resolve(__dirname, 'src', 'styles'), path.resolve(__dirname, 'node_modules')],
+        include: [path.resolve(__dirname, 'src')],
+        exclude: path.resolve(__dirname, 'src', 'styles'),
         use: [
+          'style-loader',
           {
-            loader: 'style-loader'
-          }, {
             loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
           }
         ]
       }, {
@@ -63,7 +58,10 @@ module.exports = {
     compress: true,
     port: 5000,
     proxy: {
-      '/api': 'http://localhost:1337'
+      '/api': {
+        target: 'http://localhost:1337',
+        pathRewrite: {'^/api' : ''}
+      }
     }
   }
 };
