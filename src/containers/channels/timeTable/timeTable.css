@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.channels {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.channel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 10rem;
+    background-color: #202020;
+    border-bottom: 1px solid #545454;
+}
+
+.channel:last-of-type {
+    border: none;
+}
+
+.channelLogo {
+    width: 7rem;
+}
+
+.timeSlot {
+    height: 10rem;
+    flex-shrink: 0;
+    color: white;
+}
+
+.schedules {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,9 @@
+.container {
+    position: absolute;
+    background-color: #E0A131;
+    width: 10rem;
+    height: 7rem;
+    bottom: 10rem;
+    right: 3rem;
+    font-size: 3rem;
+}

@@ -1,0 +1,8 @@
+.headerButton {
+    font-size: 3rem;
+    height: 3rem;
+}
+
+.channelPanel {
+    display: flex;
+}

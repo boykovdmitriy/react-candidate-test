@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.timeSlot {
+    width: 30rem;
+    color: white;
+    flex-shrink: 0;
+}
