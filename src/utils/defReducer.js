@@ -24,6 +24,7 @@ export function defReducer(actions, config) {
       case actions.SUCCESS:
         const compensate = get(config, 'compensate', doNothing);
         const data = compensate(action.payload.data);
+        console.log(data);
         return {
           ...state,
           data: data,

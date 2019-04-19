@@ -6,3 +6,4 @@ export * from './repeatIcon';
 export * from './searchIcon';
 export * from './tvIcon';
 export * from './userIcon';
+export * from './favoriteIcon';

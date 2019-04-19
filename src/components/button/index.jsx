@@ -1,16 +1,18 @@
 import * as React from 'react';
+import cx from 'classnames';
 import style from './button.css';
 
 export const Button = ({
-                  onClick,
-                  children,
-                  type = 'button',
-                  component: Component = 'button',
-                  ...restProps
-                }) => (
+                         className,
+                         onClick,
+                         children,
+                         type = 'button',
+                         component: Component = 'button',
+                         ...restProps
+                       }) => (
   <Component
     type={type}
-    className={style.container}
+    className={cx(style.container, className)}
     onClick={onClick}
     {...restProps}
   >
