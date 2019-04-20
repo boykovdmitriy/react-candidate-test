@@ -1,10 +1,17 @@
 .container {
     display: flex;
     flex-direction: column;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.timeTable {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - var(--footer-height) - var(--header-height) - var(--side-panel-item-size) - 10px);
 }
 
 .channels {
-    position: absolute;
     display: flex;
     flex-direction: column;
 }
@@ -13,10 +20,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10rem;
-    height: 10rem;
-    background-color: #202020;
-    border-bottom: 1px solid #545454;
+    width: var(--side-panel-item-size);
+    height: var(--side-panel-item-size);
+    background-color: var(--color-nero);
+    border-bottom: 1px solid var(--color-mortar);
 }
 
 .channel:last-of-type {
@@ -24,11 +31,11 @@
 }
 
 .channelLogo {
-    width: 7rem;
+    width: calc(var(--side-panel-item-size) - 1rem);
 }
 
 .timeSlot {
-    height: 10rem;
+    height: var(--side-panel-item-size);
     flex-shrink: 0;
     color: white;
 }

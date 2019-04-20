@@ -1,5 +1,5 @@
 .headerButton {
-    font-size: 3rem;
+    font-size: var(--icon-size);
     height: 3rem;
 }
 

@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.weekDay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 3rem;
+    height: var(--side-panel-item-size);
+    background-color: var(--color-nero);
+}

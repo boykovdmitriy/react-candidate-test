@@ -6,7 +6,6 @@ function generateTime() {
   for (let i = 0; i < 24; i++) {
     result.push(i < 10 ? `0${i}:00` : `${i}:00`);
   }
-  result.push('23:59');
   return result;
 }
 
@@ -21,11 +20,10 @@ export class TimeScale extends React.PureComponent {
   );
 
   render() {
-    console.log(times);
     return (
-      <section className={styles.container}>
-        {times.map(this.renderTimeSlot)}
-      </section>
+        <section className={styles.container}>
+          {times.map(this.renderTimeSlot)}
+        </section>
     );
   }
 }

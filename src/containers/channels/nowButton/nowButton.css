@@ -1,9 +1,9 @@
 .container {
     position: absolute;
-    background-color: #E0A131;
-    width: 10rem;
-    height: 7rem;
+    background-color: var(--color-tulip-tree);
+    width: var(--now-button-width);
+    height: var(--now-button-height);
+    font-size: var(--now-font-size);
     bottom: 10rem;
     right: 3rem;
-    font-size: 3rem;
 }

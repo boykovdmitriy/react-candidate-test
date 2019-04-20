@@ -65,9 +65,7 @@ export class Channels extends React.PureComponent {
         <section>
           <section className={styles.channelPanel}>
             <SideBarItem>
-              <Button>
-                <FavoriteIcon/>
-              </Button>
+              <FavoriteIcon/>
             </SideBarItem>
             <DaysPanel weekdays={CURRENT_WEEK} onDayChanged={this.handleDayChanged}/>
           </section>

@@ -2,7 +2,7 @@ import React from 'react';
 import {TimeScale} from '../timeScale';
 import styles from './timeTable.css';
 
-const minuteToPx = 480/60;
+const minuteToPx = 240/60;
 
 export class TimeTable extends React.PureComponent {
   renderChannel = ({id, images: {logo}}) => (
@@ -41,15 +41,17 @@ export class TimeTable extends React.PureComponent {
     return (
       <section className={styles.container}>
         <TimeScale/>
-        <section className={styles.channels}>
-          {
-            channels.map(this.renderChannel)
-          }
-        </section>
-        <section>
-          {
-            channels.map(this.renderSchedules)
-          }
+        <section className={styles.timeTable}>
+          <section className={styles.channels}>
+            {
+              channels.map(this.renderChannel)
+            }
+          </section>
+          <section>
+            {
+              channels.map(this.renderSchedules)
+            }
+          </section>
         </section>
       </section>
     );

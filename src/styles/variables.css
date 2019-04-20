@@ -1,0 +1,19 @@
+:root {
+    --header-height: 3rem;
+    --header-top-margin: 1rem;
+    --footer-height: 3rem;
+    --icon-size: 2rem;
+
+    --now-button-width: 3rem;
+    --now-button-height: 2rem;
+    --now-font-size: 1rem;
+
+    --side-panel-item-size: 4rem;
+
+    --time-slot-width: 15rem;
+
+    /*colors*/
+    --color-nero: #202020;
+    --color-tulip-tree: #E0A131;
+    --color-mortar: #545454;
+}

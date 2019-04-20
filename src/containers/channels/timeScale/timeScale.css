@@ -1,10 +1,19 @@
 .container {
     display: flex;
-    align-items: center;
+    background-color: var(--color-nero);
+    padding-left: var(--side-panel-item-size);
 }
 
 .timeSlot {
-    width: 30rem;
+    display: flex;
+    align-items: center;
+    width: var(--time-slot-width);
+    background-color: var(--color-nero);
     color: white;
+    height: 4rem;
     flex-shrink: 0;
+    border-bottom: 1px solid var(--color-mortar);
+    border-top: 1px solid var(--color-mortar);
+    border-left: 0;
+    border-right: 0;
 }
