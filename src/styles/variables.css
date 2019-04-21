@@ -2,15 +2,15 @@
     --header-height: 3rem;
     --header-top-margin: 1rem;
     --footer-height: 3rem;
-    --icon-size: 2rem;
+    --icon-size: 1.5rem;
 
     --now-button-width: 3rem;
     --now-button-height: 2rem;
     --now-font-size: 1rem;
 
-    --side-panel-item-size: 4rem;
+    --side-panel-item-size: 64px;
 
-    --time-slot-width: 15rem;
+    --time-slot-width: 240px;
 
     /*colors*/
     --color-nero: #202020;

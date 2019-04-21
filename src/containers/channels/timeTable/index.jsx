@@ -56,7 +56,7 @@ export class TimeTable extends React.PureComponent {
                 <Button
                   key={x.id + x.duration + x.start}
                   className={cx(styles.timeSlot, this.isActiveTimeSlot(x) && styles.timeSlot__active)}
-                  style={{width: x.duration * MINUTES_TO_PX}}
+                  style={{minWidth: x.duration * MINUTES_TO_PX, maxWidth: x.duration * MINUTES_TO_PX}}
                 >
                   <section>{x.title}</section>
                   <section>{moment(x.start).format('HH:mm')}-{moment(x.end).format('HH:mm')}</section>

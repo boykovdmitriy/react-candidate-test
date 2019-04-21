@@ -20,4 +20,5 @@
 .footerItem {
     height: var(--footer-height);
     font-size: var(--icon-size);
+    padding: 0 1rem;
 }

@@ -26,7 +26,8 @@
     position: -webkit-sticky; /* for Safari */
     position: sticky;
     left: 0;
-    width: var(--side-panel-item-size);
+    max-width: var(--side-panel-item-size);
+    min-width: var(--side-panel-item-size);
     height: var(--side-panel-item-size);
     background-color: var(--color-nero);
     box-shadow: inset 0 -1px 0 var(--color-mortar);
