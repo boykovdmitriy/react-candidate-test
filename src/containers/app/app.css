@@ -22,3 +22,7 @@
     font-size: var(--icon-size);
     padding: 0 1rem;
 }
+
+.footerItem__active {
+    color: var(--color-tulip-tree)
+}

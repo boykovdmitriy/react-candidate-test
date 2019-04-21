@@ -4,7 +4,7 @@
             - var(--footer-height)
             - var(--header-height)
             - var(--header-top-margin)
-            - var(--side-panel-item-size)
+            - var(--card-size)
     );
 }
 
@@ -23,12 +23,12 @@
 }
 
 .channel {
-    position: -webkit-sticky; /* for Safari */
+    position: -webkit-sticky;
     position: sticky;
     left: 0;
-    max-width: var(--side-panel-item-size);
-    min-width: var(--side-panel-item-size);
-    height: var(--side-panel-item-size);
+    max-width: var(--card-size);
+    min-width: var(--card-size);
+    height: var(--card-size);
     background-color: var(--color-nero);
     box-shadow: inset 0 -1px 0 var(--color-mortar);
     padding: 0 .5rem;
@@ -40,16 +40,16 @@
 }
 
 .channelLogo {
-    width: calc(var(--side-panel-item-size) - 1rem);
+    width: calc(var(--card-size) - 1rem);
 }
 
-.timeSlot {
+.program {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: var(--side-panel-item-size);
+    height: var(--card-size);
     flex-shrink: 0;
     color: white;
     padding: 0 0 0 .5rem;
@@ -57,15 +57,19 @@
     box-shadow: inset -5px 0 1px -4px var(--color-mortar);
 }
 
-.timeSlot__active {
+.program__active {
     background-color: var(--color-nero);
 }
 
-.schedules {
+.program__time {
+    color: var(--color-acadia);
+}
+
+.channelWithPrograms__container {
     box-shadow: inset 0 -1px 0 var(--color-mortar);
 }
 
-.schedule {
+.programs {
     display: flex;
     flex-direction: row;
 }
@@ -75,12 +79,12 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: var(--side-panel-item-size);
+    top: var(--card-size);
     left: 10rem;
     z-index: 1;
 }
 
-.timeStampBody {
+.timeStamp__body {
     height: calc(var(--table-height));
     width: 2px;
     background-color: var(--color-tulip-tree);

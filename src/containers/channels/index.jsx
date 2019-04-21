@@ -1,26 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment';
 import {channelsActions} from '../../redux/channels';
 import {Spinner} from '../../components/spinner';
 import {Header} from '../../components/header';
 import {Button} from '../../components/button';
 import {UserIcon, SearchIcon, FavoriteIcon} from '../../components/icons';
-import {DaysPanel} from './daysPanel';
-import {SideBarItem} from './sideBarItem';
+import {WeekdaySelector} from './weekdaySelector';
+import {CardItem} from './cardItem';
 import styles from './channels.css';
-import {TimeTable} from './timeTable';
-import {getCurrentTimeInMinutes} from '../../utils/timeHelpers';
-
-const CURRENT_WEEK = [
-  moment().weekday(1),
-  moment().weekday(2),
-  moment().weekday(3),
-  moment().weekday(4),
-  moment().weekday(5),
-  moment().weekday(6),
-  moment().weekday(7),
-];
+import {ProgramTable} from './programTable';
+import {getCurrentTimeInMinutes, getCurrentWeekday} from '../../utils/timeHelpers';
+import {CURRENT_WEEKDAYS} from '../../constants';
 
 const mapStateToProps = state => ({
   channelsResponse: state.indexChannelsResponse,
@@ -34,6 +24,7 @@ const mapDispatchToProps = {
 export class Channels extends React.PureComponent {
   state = {
     currentTime: getCurrentTimeInMinutes(),
+    selectedWeekday: getCurrentWeekday(),
   };
 
   componentDidMount() {
@@ -73,7 +64,7 @@ export class Channels extends React.PureComponent {
 
   render() {
     const {channelsResponse: {isLoaded, data}} = this.props;
-    const {currentTime} = this.state;
+    const {currentTime, selectedWeekday} = this.state;
 
     if (!isLoaded) return (<Spinner/>);
 
@@ -82,12 +73,16 @@ export class Channels extends React.PureComponent {
         {this.renderHeader()}
         <section>
           <section className={styles.channelPanel}>
-            <SideBarItem>
+            <CardItem>
               <FavoriteIcon/>
-            </SideBarItem>
-            <DaysPanel weekdays={CURRENT_WEEK} onDayChanged={this.handleDayChanged}/>
+            </CardItem>
+            <WeekdaySelector
+              selectedWeekday={selectedWeekday}
+              weekdays={CURRENT_WEEKDAYS}
+              onDayChanged={this.handleDayChanged}
+            />
           </section>
-          <TimeTable currentTime={currentTime} channels={data.channels}/>
+          <ProgramTable currentTime={currentTime} channels={data.channels}/>
         </section>
       </section>
     );

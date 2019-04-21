@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: var(--side-panel-item-size);
-    height: var(--side-panel-item-size);
+    width: var(--card-size);
+    height: var(--card-size);
     background-color: var(--color-nero);
     color: var(--color-mortar);
     flex-shrink: 0;

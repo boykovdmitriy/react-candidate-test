@@ -1,5 +1,4 @@
 import { formatRoute } from 'react-router-named-routes';
-import {joinUrlParts} from './utils/urlTools';
 import {toParams} from './utils/params';
 
 export function defRoute(pattern) {
@@ -10,4 +9,3 @@ export function defRoute(pattern) {
 }
 
 export const ROOT = defRoute('/');
-export const DETAILS_PAGE = defRoute(joinUrlParts(ROOT.pattern, 'login'));

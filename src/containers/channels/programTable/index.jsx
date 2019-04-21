@@ -4,19 +4,24 @@ import cx from 'classnames';
 import {NowButton} from '../nowButton';
 import {TimeScale} from '../timeScale';
 import {Button} from '../../../components/button';
-import styles from './timeTable.css';
+import styles from './programTable.css';
 import {DAY_TIMES, MINUTES_TO_PX} from '../../../constants';
 
-export class TimeTable extends React.PureComponent {
+export class ProgramTable extends React.PureComponent {
   constructor(props) {
     super(props);
     this.tableRef = React.createRef();
   }
 
+  isProgramActive = (program) => {
+    const {currentTime} = this.props;
+    return currentTime >= program.startInMinutes && currentTime < program.endInMinutes;
+  };
+
   handleNow = () => {
     const {currentTime} = this.props;
     const width = this.tableRef.current.offsetWidth;
-    this.tableRef.current.scrollTo(currentTime * MINUTES_TO_PX + 31 - width / 2, 0);
+    this.tableRef.current.scrollTo(currentTime * MINUTES_TO_PX + 32 - width / 2, 0);
   };
 
   renderChannel = ({id, logo}) => (
@@ -31,16 +36,11 @@ export class TimeTable extends React.PureComponent {
     </th>
   );
 
-  isActiveTimeSlot = (schedule) => {
-    const {currentTime} = this.props;
-    return currentTime >= schedule.startInMinutes && currentTime < schedule.endInMinutes;
-  };
-
-  renderSchedules = ({id, schedules, images: {logo}}) => {
+  renderChannelWithPrograms = ({id, schedules, images: {logo}}) => {
     return (
       <tr
         key={id}
-        className={styles.schedules}
+        className={styles.channelWithPrograms__container}
       >
         {
           this.renderChannel({id, logo})
@@ -49,17 +49,19 @@ export class TimeTable extends React.PureComponent {
           colSpan={DAY_TIMES.length}
         >
           <section
-            className={styles.schedule}
+            className={styles.programs}
           >
             {
               schedules.map(x => (
                 <Button
                   key={x.id + x.duration + x.start}
-                  className={cx(styles.timeSlot, this.isActiveTimeSlot(x) && styles.timeSlot__active)}
+                  className={cx(styles.program, this.isProgramActive(x) && styles.program__active)}
                   style={{minWidth: x.duration * MINUTES_TO_PX, maxWidth: x.duration * MINUTES_TO_PX}}
                 >
                   <section>{x.title}</section>
-                  <section>{moment(x.start).format('HH:mm')}-{moment(x.end).format('HH:mm')}</section>
+                  <section className={styles.program__time}>
+                    {moment(x.start).format('HH:mm')}-{moment(x.end).format('HH:mm')}
+                    </section>
                 </Button>
               ))
             }
@@ -78,7 +80,7 @@ export class TimeTable extends React.PureComponent {
       >
         <section
           style={{height: 66 * channels.length + 1}}
-          className={styles.timeStampBody}/>
+          className={styles.timeStamp__body}/>
       </section>
     )
   };
@@ -91,7 +93,7 @@ export class TimeTable extends React.PureComponent {
           <TimeScale currentTime={currentTime} times={DAY_TIMES}/>
           <tbody>
           {
-            channels.map(this.renderSchedules)
+            channels.map(this.renderChannelWithPrograms)
           }
           </tbody>
         </table>

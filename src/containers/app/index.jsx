@@ -1,5 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+import cx from 'classnames';
 import {Channels} from '../channels';
 import {ROOT} from '../../routes';
 import {Footer} from '../../components/footer';
@@ -17,7 +18,7 @@ export class App extends React.PureComponent {
         <Button className={styles.footerItem}>
           <TvIcon/>
         </Button>
-        <Button className={styles.footerItem}>
+        <Button className={cx(styles.footerItem, styles.footerItem__active)}>
           <ListIcon/>
         </Button>
         <Button className={styles.footerItem}>

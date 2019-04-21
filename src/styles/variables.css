@@ -8,7 +8,7 @@
     --now-button-height: 2rem;
     --now-font-size: 1rem;
 
-    --side-panel-item-size: 64px;
+    --card-size: 64px;
 
     --time-slot-width: 240px;
 
@@ -16,4 +16,5 @@
     --color-nero: #202020;
     --color-tulip-tree: #E0A131;
     --color-mortar: #545454;
+    --color-acadia: #999999;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './sideBarItem.css';
+import styles from './cardItem.css';
 
-export const SideBarItem = ({children}) => (
+export const CardItem = ({children}) => (
   <section className={styles.container}>
     {children}
   </section>

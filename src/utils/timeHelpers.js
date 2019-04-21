@@ -20,3 +20,7 @@ export function getTimeInMinutes(time) {
   const date = moment(time, SERVER_TIME_FORMAT);
   return date.hours()*60 + date.minutes();
 }
+
+export function getCurrentWeekday() {
+  return moment(new Date()).format('ddd');
+}

@@ -12,5 +12,10 @@
     justify-content: center;
     flex-direction: column;
     width: 3rem;
-    height: var(--side-panel-item-size);
+    height: var(--card-size);
+    color: var(--color-acadia);
+}
+
+.weekDay__active {
+    color: white;
 }

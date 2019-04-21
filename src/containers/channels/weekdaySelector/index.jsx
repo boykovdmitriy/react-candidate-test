@@ -1,15 +1,17 @@
 import React from 'react';
+import cx from 'classnames';
 import {Button} from '../../../components/button';
-import styles from './daysPanel.css';
+import styles from './weekdaySelector.css';
 
-export class DaysPanel extends React.PureComponent {
+export class WeekdaySelector extends React.PureComponent {
   renderWeekDay = (day) => {
+    const {selectedWeekday} = this.props;
     const date = day.format('DD.MM');
     const weekday = day.format('ddd');
     return (
       <Button
         key={date}
-        className={styles.weekDay}
+        className={cx(styles.weekDay, selectedWeekday === weekday && styles.weekDay__active)}
       >
         <section>{weekday}</section>
         <section>{date}</section>
