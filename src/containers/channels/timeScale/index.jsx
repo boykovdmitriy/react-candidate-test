@@ -1,12 +1,30 @@
 import React from 'react';
 import styles from './timeScale.css';
-import {MINUTES_TO_PX} from '../../../constants';
+import {MINUTES_TO_TABLE_PX, TIME_STAMP_BODY_WIDTH, TIME_STAMP_HEADER_WIDTH} from '../../../constants';
 
 export class TimeScale extends React.PureComponent {
+
+  renderTimeStamp() {
+    const {currentTime} = this.props;
+    const minutes = currentTime % 60;
+
+    return (
+      <>
+        <section
+          style={{left: MINUTES_TO_TABLE_PX * minutes}}
+          className={styles.timeStamp__header}
+        />
+        <section
+          style={{left: MINUTES_TO_TABLE_PX * minutes + (TIME_STAMP_HEADER_WIDTH - TIME_STAMP_BODY_WIDTH) / 2}}
+          className={styles.timeStamp__body}
+        />
+      </>
+    )
+  }
+
   render() {
     const {times, currentTime} = this.props;
     const hour = Math.trunc(currentTime / 60);
-    const minutes = currentTime % 60;
     return (
       <thead>
       <tr>
@@ -20,21 +38,10 @@ export class TimeScale extends React.PureComponent {
                 {time}
               </section>
               <section
-                className={styles.separation}
+                className={styles.timeTick}
               />
               {
-                i === hour && (
-                  <>
-                    <section
-                      style={{left: MINUTES_TO_PX * minutes - 2}}
-                      className={styles.timeStampHeader}
-                    />
-                    <section
-                      style={{left: MINUTES_TO_PX * minutes + 1}}
-                      className={styles.timeStampBody}
-                    />
-                  </>
-                )
+                i === hour && this.renderTimeStamp()
               }
             </th>
           ))

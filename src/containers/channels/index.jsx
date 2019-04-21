@@ -30,16 +30,20 @@ export class Channels extends React.PureComponent {
   componentDidMount() {
     const {fetchChannels} = this.props;
     fetchChannels();
-    this.timerId = this.startTimeWatching();
+    this.startTimeWatching();
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerId);
+    this.clearTimeWatching();
   }
 
-  startTimeWatching = () => {
-    setInterval(this.handleTimeUpdated, 60 * 1000);
+  startTimeWatching() {
+    this.timerId = setInterval(this.handleTimeUpdated, 60 * 1000);
   };
+
+  clearTimeWatching() {
+    clearInterval(this.timerId);
+  }
 
   handleTimeUpdated = () => {
     this.setState({currentTime: getCurrentTimeInMinutes()});

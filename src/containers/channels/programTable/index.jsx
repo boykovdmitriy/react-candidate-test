@@ -5,7 +5,15 @@ import {NowButton} from '../nowButton';
 import {TimeScale} from '../timeScale';
 import {Button} from '../../../components/button';
 import styles from './programTable.css';
-import {DAY_TIMES, MINUTES_TO_PX} from '../../../constants';
+import {
+  CHANNEL_ITEM_WIDTH,
+  DAY_TIMES,
+  MINUTES_TO_TABLE_PX,
+  TABLE_ROW_HEIGHT, TIME_STAMP_BODY_WIDTH,
+  TIME_STAMP_HEADER_WIDTH
+} from '../../../constants';
+
+const TIME_STAMP_OFFSET = CHANNEL_ITEM_WIDTH + (TIME_STAMP_HEADER_WIDTH - TIME_STAMP_BODY_WIDTH) / 2;
 
 export class ProgramTable extends React.PureComponent {
   constructor(props) {
@@ -20,8 +28,8 @@ export class ProgramTable extends React.PureComponent {
 
   handleNow = () => {
     const {currentTime} = this.props;
-    const width = this.tableRef.current.offsetWidth;
-    this.tableRef.current.scrollTo(currentTime * MINUTES_TO_PX + 32 - width / 2, 0);
+    const centerOfTable = this.tableRef.current.offsetWidth / 2;
+    this.tableRef.current.scrollTo(currentTime * MINUTES_TO_TABLE_PX + CHANNEL_ITEM_WIDTH - centerOfTable, 0);
   };
 
   renderChannel = ({id, logo}) => (
@@ -36,54 +44,56 @@ export class ProgramTable extends React.PureComponent {
     </th>
   );
 
-  renderChannelWithPrograms = ({id, schedules, images: {logo}}) => {
+  renderProgram = (program) => {
+    const width = program.duration * MINUTES_TO_TABLE_PX;
+    const uniqId = program.id + program.duration + program.start;
+    const time = `${moment(program.start).format('HH:mm')}-${moment(program.end).format('HH:mm')}`;
     return (
-      <tr
-        key={id}
-        className={styles.channelWithPrograms__container}
+      <Button
+        key={uniqId}
+        className={cx(styles.program, this.isProgramActive(program) && styles.program__active)}
+        style={{minWidth: width, maxWidth: width}}
       >
-        {
-          this.renderChannel({id, logo})
-        }
-        <td
-          colSpan={DAY_TIMES.length}
-        >
-          <section
-            className={styles.programs}
-          >
-            {
-              schedules.map(x => (
-                <Button
-                  key={x.id + x.duration + x.start}
-                  className={cx(styles.program, this.isProgramActive(x) && styles.program__active)}
-                  style={{minWidth: x.duration * MINUTES_TO_PX, maxWidth: x.duration * MINUTES_TO_PX}}
-                >
-                  <section>{x.title}</section>
-                  <section className={styles.program__time}>
-                    {moment(x.start).format('HH:mm')}-{moment(x.end).format('HH:mm')}
-                    </section>
-                </Button>
-              ))
-            }
-          </section>
-        </td>
-      </tr>
-    )
+        <section>{program.title}</section>
+        <section className={styles.program__time}>
+          {time}
+        </section>
+      </Button>
+    );
   };
 
-  renderTimeStamp = () => {
-    const {currentTime, channels} = this.props;
-    return (
-      <section
-        className={styles.timeStamp}
-        style={{left: currentTime * MINUTES_TO_PX + 67}}
+  renderChannelWithPrograms = ({id, schedules, images: {logo}}) => (
+    <tr
+      key={id}
+      className={styles.channelWithPrograms__container}
+    >
+      {
+        this.renderChannel({id, logo})
+      }
+      <td
+        colSpan={DAY_TIMES.length}
       >
         <section
-          style={{height: 66 * channels.length + 1}}
-          className={styles.timeStamp__body}/>
-      </section>
-    )
-  };
+          className={styles.programs}
+        >
+          {
+            schedules.map(this.renderProgram)
+          }
+        </section>
+      </td>
+    </tr>
+  );
+
+  renderTimeStamp = (currentTime, channels) => (
+    <section
+      className={styles.timeStamp}
+      style={{left: currentTime * MINUTES_TO_TABLE_PX + TIME_STAMP_OFFSET}}
+    >
+      <section
+        style={{height: TABLE_ROW_HEIGHT * channels.length}}
+        className={styles.timeStamp__body}/>
+    </section>
+  );
 
   render() {
     const {channels, currentTime} = this.props;
@@ -98,7 +108,7 @@ export class ProgramTable extends React.PureComponent {
           </tbody>
         </table>
         {
-          this.renderTimeStamp()
+          this.renderTimeStamp(currentTime, channels)
         }
         <NowButton onClick={this.handleNow}/>
       </section>

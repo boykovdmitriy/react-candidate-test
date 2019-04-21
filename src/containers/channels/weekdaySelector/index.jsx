@@ -13,8 +13,8 @@ export class WeekdaySelector extends React.PureComponent {
         key={date}
         className={cx(styles.weekDay, selectedWeekday === weekday && styles.weekDay__active)}
       >
-        <section>{weekday}</section>
-        <section>{date}</section>
+        <span>{weekday}</span>
+        <span>{date}</span>
       </Button>
     )
   };
