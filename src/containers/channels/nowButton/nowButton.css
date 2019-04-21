@@ -4,6 +4,6 @@
     width: var(--now-button-width);
     height: var(--now-button-height);
     font-size: var(--now-font-size);
-    bottom: 10rem;
+    bottom: 5rem;
     right: 3rem;
 }

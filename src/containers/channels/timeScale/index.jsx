@@ -11,7 +11,14 @@ export class TimeScale extends React.PureComponent {
         {
           times.map(time => (
             <th key={time} className={styles.timeSlot}>
-              {time}
+              <section
+                className={styles.timeValue}
+              >
+                {time}
+              </section>
+              <section
+                className={styles.separation}
+              />
             </th>
           ))
         }

@@ -10,3 +10,16 @@
     z-index: 1;
 }
 
+.timeValue {
+    position: absolute;
+    top: 1.5rem;
+    left: -18px;
+}
+
+.separation {
+    position: absolute;
+    bottom: 0;
+    height: 1rem;
+    border-left: 1px solid var(--color-mortar);
+}
+

@@ -1,5 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 import {TimeScale} from '../timeScale';
+import {Button} from '../../../components/button';
 import styles from './timeTable.css';
 
 function generateTime() {
@@ -43,13 +45,14 @@ export class TimeTable extends React.PureComponent {
           >
             {
               schedules.map(x => (
-                <section
+                <Button
                   key={x.id + x.duration + x.start}
                   className={styles.timeSlot}
                   style={{width: x.duration * minuteToPx}}
                 >
-                  {x.title}
-                </section>
+                  <section>{x.title}</section>
+                  <section>{moment(x.start).format('HH:mm')}-{moment(x.end).format('HH:mm')}</section>
+                </Button>
               ))
             }
           </section>
@@ -57,6 +60,13 @@ export class TimeTable extends React.PureComponent {
       </tr>
     )
   };
+
+  renderTimeStamp = () => (
+    <section className={styles.timeStamp}>
+      <section className={styles.timeStampHeader}/>
+      <section className={styles.timeStampBody}/>
+    </section>
+  );
 
   render() {
     const {channels} = this.props;
@@ -70,6 +80,9 @@ export class TimeTable extends React.PureComponent {
           }
           </tbody>
         </table>
+        {
+          this.renderTimeStamp()
+        }
       </section>
     );
   }
