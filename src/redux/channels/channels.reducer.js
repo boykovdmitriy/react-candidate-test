@@ -1,6 +1,6 @@
 import {channelsActions} from './channels.actions';
 import {defReducer} from '../../utils/defReducer';
-import {calculateDuration} from '../../utils/timeHelpers';
+import {calculateDuration, getTimeInMinutes} from '../../utils/timeHelpers';
 
 const compensate = ({channels}) => {
   const result = channels.map(x => ({
@@ -8,6 +8,8 @@ const compensate = ({channels}) => {
     schedules: x.schedules.map(y => ({
       ...y,
       duration: calculateDuration(y.start, y.end),
+      startInMinutes: getTimeInMinutes(y.start),
+      endInMinutes: getTimeInMinutes(y.end)
     }))
   }));
   return {

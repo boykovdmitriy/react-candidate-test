@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import cx from 'classnames';
 import {NowButton} from '../nowButton';
 import {TimeScale} from '../timeScale';
 import {Button} from '../../../components/button';
@@ -40,6 +41,11 @@ export class TimeTable extends React.PureComponent {
     </th>
   );
 
+  isActiveTimeSlot = (schedule) => {
+    const {currentTime} = this.props;
+    return currentTime >= schedule.startInMinutes && currentTime < schedule.endInMinutes;
+  };
+
   renderSchedules = ({id, schedules, images: {logo}}) => {
     return (
       <tr
@@ -59,7 +65,7 @@ export class TimeTable extends React.PureComponent {
               schedules.map(x => (
                 <Button
                   key={x.id + x.duration + x.start}
-                  className={styles.timeSlot}
+                  className={cx(styles.timeSlot, this.isActiveTimeSlot(x) && styles.timeSlot__active)}
                   style={{width: x.duration * minuteToPx}}
                 >
                   <section>{x.title}</section>

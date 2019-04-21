@@ -10,7 +10,7 @@ import {DaysPanel} from './daysPanel';
 import {SideBarItem} from './sideBarItem';
 import styles from './channels.css';
 import {TimeTable} from './timeTable';
-import {getCurrentTime} from '../../utils/timeHelpers';
+import {getCurrentTimeInMinutes} from '../../utils/timeHelpers';
 
 const CURRENT_WEEK = [
   moment().weekday(1),
@@ -33,7 +33,7 @@ const mapDispatchToProps = {
 @connect(mapStateToProps, mapDispatchToProps)
 export class Channels extends React.PureComponent {
   state = {
-    currentTime: getCurrentTime(),
+    currentTime: getCurrentTimeInMinutes(),
   };
 
   componentDidMount() {
@@ -51,7 +51,7 @@ export class Channels extends React.PureComponent {
   };
 
   handleTimeUpdated = () => {
-    this.setState({currentTime: getCurrentTime()});
+    this.setState({currentTime: getCurrentTimeInMinutes()});
   };
 
   handleDayChanged = () => {

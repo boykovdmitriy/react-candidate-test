@@ -11,7 +11,12 @@ export function calculateDuration(startTime, endTime) {
   return end.diff(start, 'minutes');
 }
 
-export function getCurrentTime() {
+export function getCurrentTimeInMinutes() {
   const date = new Date();
   return date.getHours() * 60 + date.getMinutes();
+}
+
+export function getTimeInMinutes(time) {
+  const date = moment(time, SERVER_TIME_FORMAT);
+  return date.hours()*60 + date.minutes();
 }
