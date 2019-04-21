@@ -5,17 +5,7 @@ import {NowButton} from '../nowButton';
 import {TimeScale} from '../timeScale';
 import {Button} from '../../../components/button';
 import styles from './timeTable.css';
-
-function generateTime() {
-  const result = [];
-  for (let i = 0; i < 24; i++) {
-    result.push(i < 10 ? `0${i}:00` : `${i}:00`);
-  }
-  return result;
-}
-
-const times = generateTime();
-const minuteToPx = 240 / 60;
+import {DAY_TIMES, MINUTES_TO_PX} from '../../../constants';
 
 export class TimeTable extends React.PureComponent {
   constructor(props) {
@@ -26,7 +16,7 @@ export class TimeTable extends React.PureComponent {
   handleNow = () => {
     const {currentTime} = this.props;
     const width = this.tableRef.current.offsetWidth;
-    this.tableRef.current.scrollTo(currentTime * minuteToPx + 31 - width / 2, 0);
+    this.tableRef.current.scrollTo(currentTime * MINUTES_TO_PX + 31 - width / 2, 0);
   };
 
   renderChannel = ({id, logo}) => (
@@ -56,7 +46,7 @@ export class TimeTable extends React.PureComponent {
           this.renderChannel({id, logo})
         }
         <td
-          colSpan={times.length}
+          colSpan={DAY_TIMES.length}
         >
           <section
             className={styles.schedule}
@@ -66,7 +56,7 @@ export class TimeTable extends React.PureComponent {
                 <Button
                   key={x.id + x.duration + x.start}
                   className={cx(styles.timeSlot, this.isActiveTimeSlot(x) && styles.timeSlot__active)}
-                  style={{width: x.duration * minuteToPx}}
+                  style={{width: x.duration * MINUTES_TO_PX}}
                 >
                   <section>{x.title}</section>
                   <section>{moment(x.start).format('HH:mm')}-{moment(x.end).format('HH:mm')}</section>
@@ -84,7 +74,7 @@ export class TimeTable extends React.PureComponent {
     return (
       <section
         className={styles.timeStamp}
-        style={{left: currentTime * minuteToPx + 31}}
+        style={{left: currentTime * MINUTES_TO_PX + 67}}
       >
         <section
           style={{height: 66 * channels.length + 1}}
@@ -98,7 +88,7 @@ export class TimeTable extends React.PureComponent {
     return (
       <section ref={this.tableRef} className={styles.container}>
         <table className={styles.table}>
-          <TimeScale currentTime={currentTime} times={times}/>
+          <TimeScale currentTime={currentTime} times={DAY_TIMES}/>
           <tbody>
           {
             channels.map(this.renderSchedules)

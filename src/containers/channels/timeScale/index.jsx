@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './timeScale.css';
-
-const minuteToPx = 240 / 60;
+import {MINUTES_TO_PX} from '../../../constants';
 
 export class TimeScale extends React.PureComponent {
   render() {
@@ -27,11 +26,11 @@ export class TimeScale extends React.PureComponent {
                 i === hour && (
                   <>
                     <section
-                      style={{left: minuteToPx * minutes - 2}}
+                      style={{left: MINUTES_TO_PX * minutes - 2}}
                       className={styles.timeStampHeader}
                     />
                     <section
-                      style={{left: minuteToPx * minutes + 1}}
+                      style={{left: MINUTES_TO_PX * minutes + 1}}
                       className={styles.timeStampBody}
                     />
                   </>

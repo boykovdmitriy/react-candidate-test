@@ -2,12 +2,18 @@
     position: sticky;
     top: 0;
     max-width: var(--time-slot-width);
+    min-width: var(--time-slot-width);
     background-color: var(--color-nero);
     color: white;
     height: 4rem;
     box-shadow: inset 0 1px 0 var(--color-mortar),
     inset 0 -1px 0 var(--color-mortar);
     z-index: 3;
+}
+
+.timeSlot:first-of-type {
+    max-width: var(--side-panel-item-size);
+    min-width: var(--side-panel-item-size);
 }
 
 .timeValue {
