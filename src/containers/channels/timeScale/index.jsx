@@ -1,29 +1,22 @@
 import React from 'react';
 import styles from './timeScale.css';
 
-function generateTime() {
-  const result = [];
-  for (let i = 0; i < 24; i++) {
-    result.push(i < 10 ? `0${i}:00` : `${i}:00`);
-  }
-  return result;
-}
-
-const times = generateTime();
-
 export class TimeScale extends React.PureComponent {
-
-  renderTimeSlot = (time) => (
-    <section key={time} className={styles.timeSlot}>
-      {time}
-    </section>
-  );
-
   render() {
+    const {times} = this.props;
     return (
-        <section className={styles.container}>
-          {times.map(this.renderTimeSlot)}
-        </section>
+      <thead>
+      <tr>
+        <th className={styles.timeSlot}/>
+        {
+          times.map(time => (
+            <th key={time} className={styles.timeSlot}>
+              {time}
+            </th>
+          ))
+        }
+      </tr>
+      </thead>
     );
   }
 }

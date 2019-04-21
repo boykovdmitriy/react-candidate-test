@@ -7,6 +7,6 @@
     background-color: var(--color-nero);
     color: var(--color-mortar);
     flex-shrink: 0;
-    box-shadow: 8px 0 5px -5px rgba(0,0,0,0.75);
+    box-shadow: 8px 0 5px -5px rgba(0, 0, 0, 0.75);
     z-index: 1;
 }

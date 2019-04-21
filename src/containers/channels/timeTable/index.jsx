@@ -2,11 +2,21 @@ import React from 'react';
 import {TimeScale} from '../timeScale';
 import styles from './timeTable.css';
 
-const minuteToPx = 240/60;
+function generateTime() {
+  const result = [];
+  for (let i = 0; i < 24; i++) {
+    result.push(i < 10 ? `0${i}:00` : `${i}:00`);
+  }
+  return result;
+}
+
+const times = generateTime();
+const minuteToPx = 240 / 60;
 
 export class TimeTable extends React.PureComponent {
-  renderChannel = ({id, images: {logo}}) => (
-    <section
+
+  renderChannel = ({id, logo}) => (
+    <th
       className={styles.channel}
       key={id}
     >
@@ -14,25 +24,37 @@ export class TimeTable extends React.PureComponent {
         className={styles.channelLogo}
         src={logo}
       />
-    </section>
+    </th>
   );
 
-  renderSchedules = ({id, schedules}) => {
+  renderSchedules = ({id, schedules, images: {logo}}) => {
     return (
-      <section
+      <tr
         key={id}
-        className={styles.schedules}
       >
-        {schedules.map(x => (
+        {
+          this.renderChannel({id, logo})
+        }
+        <td
+          colSpan={times.length}
+        >
           <section
-            key={x.id+x.duration+x.start}
-            className={styles.timeSlot}
-            style={{width: x.duration*minuteToPx}}
+            className={styles.schedule}
           >
-            {x.title}
+            {
+              schedules.map(x => (
+                <section
+                  key={x.id + x.duration + x.start}
+                  className={styles.timeSlot}
+                  style={{width: x.duration * minuteToPx}}
+                >
+                  {x.title}
+                </section>
+              ))
+            }
           </section>
-        ))}
-      </section>
+        </td>
+      </tr>
     )
   };
 
@@ -40,19 +62,14 @@ export class TimeTable extends React.PureComponent {
     const {channels} = this.props;
     return (
       <section className={styles.container}>
-        <TimeScale/>
-        <section className={styles.timeTable}>
-          <section className={styles.channels}>
-            {
-              channels.map(this.renderChannel)
-            }
-          </section>
-          <section>
-            {
-              channels.map(this.renderSchedules)
-            }
-          </section>
-        </section>
+        <table className={styles.table}>
+          <TimeScale times={times}/>
+          <tbody>
+          {
+            channels.map(this.renderSchedules)
+          }
+          </tbody>
+        </table>
       </section>
     );
   }
