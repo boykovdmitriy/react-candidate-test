@@ -6,11 +6,11 @@ import {Spinner} from '../../components/spinner';
 import {Header} from '../../components/header';
 import {Button} from '../../components/button';
 import {UserIcon, SearchIcon, FavoriteIcon} from '../../components/icons';
-import {NowButton} from './nowButton';
 import {DaysPanel} from './daysPanel';
 import {SideBarItem} from './sideBarItem';
 import styles from './channels.css';
 import {TimeTable} from './timeTable';
+import {getCurrentTime} from '../../utils/timeHelpers';
 
 const CURRENT_WEEK = [
   moment().weekday(1),
@@ -32,10 +32,27 @@ const mapDispatchToProps = {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export class Channels extends React.PureComponent {
+  state = {
+    currentTime: getCurrentTime(),
+  };
+
   componentDidMount() {
     const {fetchChannels} = this.props;
     fetchChannels();
+    this.timerId = this.startTimeWatching();
   }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+
+  startTimeWatching = () => {
+    setInterval(this.handleTimeUpdated, 60 * 1000);
+  };
+
+  handleTimeUpdated = () => {
+    this.setState({currentTime: getCurrentTime()});
+  };
 
   handleDayChanged = () => {
 
@@ -56,6 +73,7 @@ export class Channels extends React.PureComponent {
 
   render() {
     const {channelsResponse: {isLoaded, data}} = this.props;
+    const {currentTime} = this.state;
 
     if (!isLoaded) return (<Spinner/>);
 
@@ -69,9 +87,8 @@ export class Channels extends React.PureComponent {
             </SideBarItem>
             <DaysPanel weekdays={CURRENT_WEEK} onDayChanged={this.handleDayChanged}/>
           </section>
-          <TimeTable channels={data.channels}/>
+          <TimeTable currentTime={currentTime} channels={data.channels}/>
         </section>
-        <NowButton/>
       </section>
     );
   }

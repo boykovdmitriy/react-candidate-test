@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import {NowButton} from '../nowButton';
 import {TimeScale} from '../timeScale';
 import {Button} from '../../../components/button';
 import styles from './timeTable.css';
@@ -16,6 +17,16 @@ const times = generateTime();
 const minuteToPx = 240 / 60;
 
 export class TimeTable extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.tableRef = React.createRef();
+  }
+
+  handleNow = () => {
+    const {currentTime} = this.props;
+    const width = this.tableRef.current.offsetWidth;
+    this.tableRef.current.scrollTo(currentTime * minuteToPx + 31 - width / 2, 0);
+  };
 
   renderChannel = ({id, logo}) => (
     <th
@@ -33,6 +44,7 @@ export class TimeTable extends React.PureComponent {
     return (
       <tr
         key={id}
+        className={styles.schedules}
       >
         {
           this.renderChannel({id, logo})
@@ -61,19 +73,26 @@ export class TimeTable extends React.PureComponent {
     )
   };
 
-  renderTimeStamp = () => (
-    <section className={styles.timeStamp}>
-      <section className={styles.timeStampHeader}/>
-      <section className={styles.timeStampBody}/>
-    </section>
-  );
+  renderTimeStamp = () => {
+    const {currentTime, channels} = this.props;
+    return (
+      <section
+        className={styles.timeStamp}
+        style={{left: currentTime * minuteToPx + 31}}
+      >
+        <section
+          style={{height: 66 * channels.length + 1}}
+          className={styles.timeStampBody}/>
+      </section>
+    )
+  };
 
   render() {
-    const {channels} = this.props;
+    const {channels, currentTime} = this.props;
     return (
-      <section className={styles.container}>
+      <section ref={this.tableRef} className={styles.container}>
         <table className={styles.table}>
-          <TimeScale times={times}/>
+          <TimeScale currentTime={currentTime} times={times}/>
           <tbody>
           {
             channels.map(this.renderSchedules)
@@ -83,6 +102,7 @@ export class TimeTable extends React.PureComponent {
         {
           this.renderTimeStamp()
         }
+        <NowButton onClick={this.handleNow}/>
       </section>
     );
   }

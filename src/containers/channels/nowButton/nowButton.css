@@ -1,5 +1,5 @@
 .container {
-    position: absolute;
+    position: fixed;
     background-color: var(--color-tulip-tree);
     width: var(--now-button-width);
     height: var(--now-button-height);
