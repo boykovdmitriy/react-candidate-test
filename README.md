@@ -2,8 +2,8 @@
 after installing packages by 'yarn install' / 'npm install' 
 you could run dev server with mocked api by 'npm start'.
 
-***How much time I spend***
-I'm not sure how much time I spend, but I think not more than 20 hours
+***How much time I spent***
+I'm not sure how much time I spent, but I think not more than 20 hours
 
 ***Documentation of the process***
 When I just started, I wanted to do it without using html table because it isn't regular table.
