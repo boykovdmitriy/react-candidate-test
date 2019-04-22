@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardItem renders children content 1`] = `
+<section
+  className="container"
+>
+  some useful information
+</section>
+`;

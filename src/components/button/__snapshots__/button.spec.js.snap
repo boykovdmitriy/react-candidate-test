@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders children content 1`] = `
+<button
+  className="container"
+  onClick={[MockFunction]}
+  type="button"
+>
+  some useful information
+</button>
+`;

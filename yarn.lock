@@ -7138,6 +7138,11 @@ react-router-named-routes@^0.0.23:
   dependencies:
     create-react-class "^15.6.0"
 
+react-router-test-context@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-router-test-context/-/react-router-test-context-0.1.0.tgz#3a8f52078fc171f4c966c05cefb6dff3de399713"
+  integrity sha1-Oo9SB4/BcfTJZsBc77bf8945lxM=
+
 react-router@5.0.0, react-router@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.0.0.tgz#349863f769ffc2fa10ee7331a4296e86bc12879d"

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icons render BackIcon 1`] = `
+<i
+  className="fa fa-arrow-left"
+/>
+`;
+
+exports[`Icons render ClockIcon 1`] = `
+<i
+  className="far fa-clock"
+/>
+`;
+
+exports[`Icons render FavoriteIcon 1`] = `
+<i
+  className="fa fa-star"
+/>
+`;
+
+exports[`Icons render HomeIcon 1`] = `
+<i
+  className="fa fa-home"
+/>
+`;
+
+exports[`Icons render ListIcon 1`] = `
+<i
+  className="fa fa-th-list"
+/>
+`;
+
+exports[`Icons render RepeatIcon 1`] = `
+<i
+  className="fa fa-repeat "
+/>
+`;
+
+exports[`Icons render SearchIcon 1`] = `
+<i
+  className="fa fa-search"
+/>
+`;
+
+exports[`Icons render TvIcon 1`] = `
+<i
+  className="fa fa-tv"
+/>
+`;
+
+exports[`Icons render UserIcon 1`] = `
+<i
+  className="fa fa-user"
+/>
+`;

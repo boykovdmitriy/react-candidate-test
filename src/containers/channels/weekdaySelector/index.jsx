@@ -5,12 +5,14 @@ import styles from './weekdaySelector.css';
 
 export class WeekdaySelector extends React.PureComponent {
   renderWeekDay = (day) => {
-    const {selectedWeekday} = this.props;
+    const {selectedWeekday, onDayChanged} = this.props;
     const date = day.format('DD.MM');
     const weekday = day.format('ddd');
     return (
       <Button
         key={date}
+        data-element={day.toString()}
+        onClick={() => onDayChanged(day)}
         className={cx(styles.weekDay, selectedWeekday === weekday && styles.weekDay__active)}
       >
         <span>{weekday}</span>

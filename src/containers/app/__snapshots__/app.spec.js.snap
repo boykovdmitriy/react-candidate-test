@@ -1,7 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render App component 1`] = `
-<h1>
-  init
-</h1>
+<main
+  className="container"
+>
+  <section
+    className="content"
+  >
+    <Switch>
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(Channels)",
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/"
+      />
+    </Switch>
+  </section>
+  <Footer
+    className="footer"
+  >
+    <Button
+      className="footerItem"
+    >
+      <HomeIcon />
+    </Button>
+    <Button
+      className="footerItem"
+    >
+      <TvIcon />
+    </Button>
+    <Button
+      className="footerItem footerItem__active"
+    >
+      <ListIcon />
+    </Button>
+    <Button
+      className="footerItem"
+    >
+      <RepeatIcon />
+    </Button>
+    <Button
+      className="footerItem"
+    >
+      <UserIcon />
+    </Button>
+  </Footer>
+</main>
 `;

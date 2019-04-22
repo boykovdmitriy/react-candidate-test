@@ -31,7 +31,7 @@ export function buildFetch(
 
     const data = {};
     try {
-      data.response = yield call(authApiFetch, reqUrl, params);
+      data.response = yield call(sagaApiFetch, reqUrl, params);
       data.ok = true;
     } catch (error) {
       data.error = error;
@@ -42,7 +42,7 @@ export function buildFetch(
       yield put(requestActions.success(successPayload));
     }
     if (!data.ok) {
-      console.warn(data.error); // tslint-disable-line no-console
+      console.warn(data.error);
       const errorPayload = {...data.error, ...baseResultPayload};
       yield put(requestActions.failure(errorPayload));
     }
@@ -68,7 +68,7 @@ export function takeEveryRequest(actions, fetch) {
   return takeEvery(actions.REQUEST, fetch);
 }
 
-export function* authApiFetch(
+export function* sagaApiFetch(
   url,
   options = {method: GET},
 ) {
