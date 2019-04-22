@@ -1,6 +1,5 @@
 import moment from 'moment';
-
-export const SERVER_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
+import {SERVER_TIME_FORMAT, WEEKDAY_FORMAT} from '../constants';
 
 export function calculateDuration(startTime, endTime) {
   if (!startTime || !endTime) {
@@ -18,9 +17,9 @@ export function getCurrentTimeInMinutes() {
 
 export function getTimeInMinutes(time) {
   const date = moment(time, SERVER_TIME_FORMAT);
-  return date.hours()*60 + date.minutes();
+  return date.hours() * 60 + date.minutes();
 }
 
 export function getCurrentWeekday() {
-  return moment(new Date()).format('ddd');
+  return moment(new Date()).format(WEEKDAY_FORMAT);
 }

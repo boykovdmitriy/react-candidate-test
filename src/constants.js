@@ -15,6 +15,11 @@ export const CHANNEL_ITEM_WIDTH = 64;
 export const TIME_STAMP_HEADER_WIDTH = 8;
 export const TIME_STAMP_BODY_WIDTH = 2;
 
+export const SERVER_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
+export const TIME_FORMAT = 'HH:mm';
+export const SHORT_DATE_FORMAT = 'DD.MM';
+export const WEEKDAY_FORMAT = 'ddd';
+
 
 export const CURRENT_WEEKDAYS = [
   moment().weekday(1),

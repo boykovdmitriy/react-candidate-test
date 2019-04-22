@@ -1,7 +1,7 @@
 import {WeekdaySelector} from './index';
 import {BasePageObject} from '../../../utils/pageObjectBase';
 import styles from './weekdaySelector.css';
-import {CURRENT_WEEKDAYS} from '../../../constants';
+import {CURRENT_WEEKDAYS, WEEKDAY_FORMAT} from '../../../constants';
 
 class PageObject extends BasePageObject {
   $$register() {
@@ -18,7 +18,7 @@ class PageObject extends BasePageObject {
   $$initData() {
     return {
       weekdays: CURRENT_WEEKDAYS,
-      selectedWeekday: CURRENT_WEEKDAYS[0].format('ddd'),
+      selectedWeekday: CURRENT_WEEKDAYS[0].format(WEEKDAY_FORMAT),
     }
   }
 
@@ -33,7 +33,7 @@ class PageObject extends BasePageObject {
   isOnlyOneDayActive() {
     const {weekdays, selectedWeekday} = this.data;
     weekdays.forEach(x => {
-      if (x.format('ddd') === selectedWeekday) {
+      if (x.format(WEEKDAY_FORMAT) === selectedWeekday) {
         expect(this.isDaySelected(x)).toBeTruthy();
       } else {
         expect(this.isDaySelected(x)).toBeFalsy();

@@ -9,7 +9,7 @@ import {
   CHANNEL_ITEM_WIDTH,
   DAY_TIMES,
   MINUTES_TO_TABLE_PX,
-  TABLE_ROW_HEIGHT, TIME_STAMP_BODY_WIDTH,
+  TABLE_ROW_HEIGHT, TIME_FORMAT, TIME_STAMP_BODY_WIDTH,
   TIME_STAMP_HEADER_WIDTH
 } from '../../../constants';
 
@@ -47,7 +47,7 @@ export class ProgramTable extends React.PureComponent {
   renderProgram = (program) => {
     const width = program.duration * MINUTES_TO_TABLE_PX;
     const uniqId = program.id + program.duration + program.start;
-    const time = `${moment(program.start).format('HH:mm')}-${moment(program.end).format('HH:mm')}`;
+    const time = `${moment(program.start).format(TIME_FORMAT)}-${moment(program.end).format(TIME_FORMAT)}`;
     return (
       <Button
         key={uniqId}

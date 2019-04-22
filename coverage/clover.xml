@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1555893995403" clover="3.2.0">
-  <project timestamp="1555893995403" name="All files">
-    <metrics statements="232" coveredstatements="122" conditionals="76" coveredconditionals="25" methods="96" coveredmethods="43" elements="404" coveredelements="190" complexity="0" loc="232" ncloc="232" packages="15" files="34" classes="34"/>
+<coverage generated="1555897945469" clover="3.2.0">
+  <project timestamp="1555897945469" name="All files">
+    <metrics statements="235" coveredstatements="125" conditionals="76" coveredconditionals="25" methods="96" coveredmethods="43" elements="407" coveredelements="193" complexity="0" loc="235" ncloc="235" packages="15" files="34" classes="34"/>
     <package name="src">
-      <metrics statements="14" coveredstatements="13" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="2"/>
+      <metrics statements="18" coveredstatements="17" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="2"/>
       <file name="constants.js" path="/Users/dmitriy/development/react-candidate-test/src/constants.js">
-        <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="4" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="72" type="cond" truecount="2" falsecount="0"/>
@@ -16,7 +16,11 @@
         <line num="14" count="3" type="stmt"/>
         <line num="15" count="3" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
         <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
       </file>
       <file name="routes.js" path="/Users/dmitriy/development/react-candidate-test/src/routes.js">
         <metrics statements="3" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="1"/>
@@ -192,13 +196,13 @@
       <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
       <file name="index.jsx" path="/Users/dmitriy/development/react-candidate-test/src/containers/channels/weekdaySelector/index.jsx">
         <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="8" count="14" type="stmt"/>
         <line num="9" count="14" type="stmt"/>
         <line num="10" count="14" type="stmt"/>
         <line num="11" count="14" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
+        <line num="12" count="14" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.redux.channels">
@@ -226,7 +230,7 @@
       </file>
     </package>
     <package name="src.utils">
-      <metrics statements="132" coveredstatements="56" conditionals="61" coveredconditionals="17" methods="48" coveredmethods="18"/>
+      <metrics statements="131" coveredstatements="55" conditionals="61" coveredconditionals="17" methods="48" coveredmethods="18"/>
       <file name="api.js" path="/Users/dmitriy/development/react-candidate-test/src/utils/api.js">
         <metrics statements="19" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="11" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -367,18 +371,17 @@
         <line num="4" count="0" type="stmt"/>
       </file>
       <file name="timeHelpers.js" path="/Users/dmitriy/development/react-candidate-test/src/utils/timeHelpers.js">
-        <metrics statements="11" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="6" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="7" count="0" type="stmt"/>
+        <metrics statements="10" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
       </file>
     </package>
   </project>
