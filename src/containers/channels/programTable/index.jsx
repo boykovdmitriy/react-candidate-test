@@ -7,10 +7,9 @@ import {Button} from '../../../components/button';
 import styles from './programTable.css';
 import {
   DAY_TIMES,
-  MINUTES_TO_TABLE_PX,
   TIME_FORMAT
 } from '../../../constants';
-import {calculateNowPosition, calculateTimeStampBodyMetrics} from './utils';
+import {calculateNowPosition, calculateProgramWidth, calculateTimeStampBodyMetrics} from './utils';
 
 export class ProgramTable extends React.PureComponent {
   constructor(props) {
@@ -42,12 +41,11 @@ export class ProgramTable extends React.PureComponent {
   );
 
   renderProgram = (program) => {
-    const width = program.duration * MINUTES_TO_TABLE_PX;
-    const uniqId = program.id + program.duration + program.start;
+    const width = calculateProgramWidth(program.duration);
     const time = `${moment(program.start).format(TIME_FORMAT)}-${moment(program.end).format(TIME_FORMAT)}`;
     return (
       <Button
-        key={uniqId}
+        key={program.uniqId}
         className={cx(styles.program, this.isProgramActive(program) && styles.program__active)}
         style={{minWidth: width, maxWidth: width}}
       >

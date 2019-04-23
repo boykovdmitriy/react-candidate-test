@@ -26,3 +26,7 @@ export function calculateTimeStampHeaderMetrics(currentTime) {
     bodyPiecePosition: MINUTES_TO_TABLE_PX * minutes + centeringOffset,
   }
 }
+
+export function calculateProgramWidth(duration) {
+  return duration * MINUTES_TO_TABLE_PX;
+}

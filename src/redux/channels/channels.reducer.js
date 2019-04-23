@@ -1,3 +1,4 @@
+import uuid from 'uuid/v1';
 import {channelsActions} from './channels.actions';
 import {defReducer} from '../../utils/defReducer';
 import {calculateDuration, getTimeInMinutes} from '../../utils/timeHelpers';
@@ -9,7 +10,8 @@ const compensate = ({channels}) => {
       ...y,
       duration: calculateDuration(y.start, y.end),
       startInMinutes: getTimeInMinutes(y.start),
-      endInMinutes: getTimeInMinutes(y.end)
+      endInMinutes: getTimeInMinutes(y.end),
+      uniqId: uuid()
     }))
   }));
   return {
