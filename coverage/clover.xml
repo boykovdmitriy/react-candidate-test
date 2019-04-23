@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1555897945469" clover="3.2.0">
-  <project timestamp="1555897945469" name="All files">
-    <metrics statements="235" coveredstatements="125" conditionals="76" coveredconditionals="25" methods="96" coveredmethods="43" elements="407" coveredelements="193" complexity="0" loc="235" ncloc="235" packages="15" files="34" classes="34"/>
+<coverage generated="1556052934009" clover="3.2.0">
+  <project timestamp="1556052934009" name="All files">
+    <metrics statements="240" coveredstatements="127" conditionals="76" coveredconditionals="25" methods="99" coveredmethods="44" elements="415" coveredelements="196" complexity="0" loc="240" ncloc="240" packages="15" files="35" classes="35"/>
     <package name="src">
       <metrics statements="18" coveredstatements="17" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="2"/>
       <file name="constants.js" path="/Users/dmitriy/development/react-candidate-test/src/constants.js">
@@ -156,40 +156,48 @@
       </file>
     </package>
     <package name="src.containers.channels.programTable">
-      <metrics statements="17" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="0"/>
+      <metrics statements="23" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="1"/>
       <file name="index.jsx" path="/Users/dmitriy/development/react-candidate-test/src/containers/channels/programTable/index.jsx">
-        <metrics statements="17" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="0"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
+        <metrics statements="17" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
         <line num="99" count="0" type="stmt"/>
         <line num="100" count="0" type="stmt"/>
       </file>
+      <file name="utils.js" path="/Users/dmitriy/development/react-candidate-test/src/containers/channels/programTable/utils.js">
+        <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+      </file>
     </package>
-    <package name="src.containers.channels.timeScale">
-      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-      <file name="index.jsx" path="/Users/dmitriy/development/react-candidate-test/src/containers/channels/timeScale/index.jsx">
-        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="5" count="2" type="stmt"/>
+    <package name="src.containers.channels.programTable.timeScale">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="index.jsx" path="/Users/dmitriy/development/react-candidate-test/src/containers/channels/programTable/timeScale/index.jsx">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="38" count="24" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="35" count="24" type="stmt"/>
       </file>
     </package>
     <package name="src.containers.channels.weekdaySelector">

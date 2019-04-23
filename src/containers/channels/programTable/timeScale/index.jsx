@@ -1,24 +1,21 @@
 import React from 'react';
 import styles from './timeScale.css';
-import {MINUTES_TO_TABLE_PX, TIME_STAMP_BODY_WIDTH, TIME_STAMP_HEADER_WIDTH} from '../../../constants';
-
-export const TIME_STAMP_BODY_OFFSET = (TIME_STAMP_HEADER_WIDTH - TIME_STAMP_BODY_WIDTH) / 2;
+import {calculateTimeStampHeaderMetrics} from '../utils';
 
 export class TimeScale extends React.PureComponent {
 
   renderTimeStamp() {
     const {currentTime} = this.props;
-    const minutes = currentTime % 60;
-
+    const {headerPosition, bodyPiecePosition} = calculateTimeStampHeaderMetrics(currentTime);
     return (
       <>
         <section
-          style={{left: MINUTES_TO_TABLE_PX * minutes}}
+          style={{left: headerPosition}}
           className={styles.timeStamp__header}
           data-item="timeStamp__header"
         />
         <section
-          style={{left: MINUTES_TO_TABLE_PX * minutes + TIME_STAMP_BODY_OFFSET}}
+          style={{left: bodyPiecePosition}}
           className={styles.timeStamp__body}
           data-item="timeStamp__body"
         />

@@ -2,18 +2,15 @@ import React from 'react';
 import moment from 'moment';
 import cx from 'classnames';
 import {NowButton} from '../nowButton';
-import {TimeScale} from '../timeScale';
+import {TimeScale} from './timeScale';
 import {Button} from '../../../components/button';
 import styles from './programTable.css';
 import {
-  CHANNEL_ITEM_WIDTH,
   DAY_TIMES,
   MINUTES_TO_TABLE_PX,
-  TABLE_ROW_HEIGHT, TIME_FORMAT, TIME_STAMP_BODY_WIDTH,
-  TIME_STAMP_HEADER_WIDTH
+  TIME_FORMAT
 } from '../../../constants';
-
-const TIME_STAMP_OFFSET = CHANNEL_ITEM_WIDTH + (TIME_STAMP_HEADER_WIDTH - TIME_STAMP_BODY_WIDTH) / 2;
+import {calculateNowPosition, calculateTimeStampBodyMetrics} from './utils';
 
 export class ProgramTable extends React.PureComponent {
   constructor(props) {
@@ -28,8 +25,8 @@ export class ProgramTable extends React.PureComponent {
 
   handleNow = () => {
     const {currentTime} = this.props;
-    const centerOfTable = this.tableRef.current.offsetWidth / 2;
-    this.tableRef.current.scrollTo(currentTime * MINUTES_TO_TABLE_PX + CHANNEL_ITEM_WIDTH - centerOfTable, 0);
+    const tableWidth = this.tableRef.current.offsetWidth;
+    this.tableRef.current.scrollTo(calculateNowPosition(currentTime, tableWidth), 0);
   };
 
   renderChannel = ({id, logo}) => (
@@ -84,16 +81,19 @@ export class ProgramTable extends React.PureComponent {
     </tr>
   );
 
-  renderTimeStamp = (currentTime, channels) => (
-    <section
-      className={styles.timeStamp}
-      style={{left: currentTime * MINUTES_TO_TABLE_PX + TIME_STAMP_OFFSET}}
-    >
+  renderTimeStamp = (currentTime, channels) => {
+    const {position, bodyHeight} = calculateTimeStampBodyMetrics(currentTime, channels.length);
+    return (
       <section
-        style={{height: TABLE_ROW_HEIGHT * channels.length}}
-        className={styles.timeStamp__body}/>
-    </section>
-  );
+        className={styles.timeStamp}
+        style={{left: position}}
+      >
+        <section
+          style={{height: bodyHeight}}
+          className={styles.timeStamp__body}/>
+      </section>
+    );
+  };
 
   render() {
     const {channels, currentTime} = this.props;

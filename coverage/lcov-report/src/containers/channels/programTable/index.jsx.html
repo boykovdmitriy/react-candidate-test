@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">5.88% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/17</span>
+        <span class='fraction'>0/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">5.88% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/17</span>
+        <span class='fraction'>0/17</span>
       </div>
     </div>
     <p class="quiet">
@@ -177,9 +177,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -250,6 +247,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -282,18 +282,15 @@
 import moment from 'moment';
 import cx from 'classnames';
 import {NowButton} from '../nowButton';
-import {TimeScale} from '../timeScale';
+import {TimeScale} from './timeScale';
 import {Button} from '../../../components/button';
 import styles from './programTable.css';
 import {
-  CHANNEL_ITEM_WIDTH,
   DAY_TIMES,
   MINUTES_TO_TABLE_PX,
-  TABLE_ROW_HEIGHT, TIME_FORMAT, TIME_STAMP_BODY_WIDTH,
-  TIME_STAMP_HEADER_WIDTH
+  TIME_FORMAT
 } from '../../../constants';
-&nbsp;
-const TIME_STAMP_OFFSET = CHANNEL_ITEM_WIDTH + (TIME_STAMP_HEADER_WIDTH - TIME_STAMP_BODY_WIDTH) / 2;
+import {calculateNowPosition, calculateTimeStampBodyMetrics} from './utils';
 &nbsp;
 export class ProgramTable extends React.PureComponent {
 <span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
@@ -308,8 +305,8 @@ export class ProgramTable extends React.PureComponent {
 &nbsp;
   handleNow = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
     const {currentTime} = <span class="cstat-no" title="statement not covered" >this.props;</span>
-    const centerOfTable = <span class="cstat-no" title="statement not covered" >this.tableRef.current.offsetWidth / 2;</span>
-<span class="cstat-no" title="statement not covered" >    this.tableRef.current.scrollTo(currentTime * MINUTES_TO_TABLE_PX + CHANNEL_ITEM_WIDTH - centerOfTable, 0);</span>
+    const tableWidth = <span class="cstat-no" title="statement not covered" >this.tableRef.current.offsetWidth;</span>
+<span class="cstat-no" title="statement not covered" >    this.tableRef.current.scrollTo(calculateNowPosition(currentTime, tableWidth), 0);</span>
   };
 &nbsp;
   renderChannel = <span class="fstat-no" title="function not covered" >({</span>id, logo}) =&gt; (
@@ -364,16 +361,19 @@ export class ProgramTable extends React.PureComponent {
     &lt;/tr&gt;
   );
 &nbsp;
-  renderTimeStamp = <span class="fstat-no" title="function not covered" >(c</span>urrentTime, channels) =&gt; (
-<span class="cstat-no" title="statement not covered" >    &lt;section</span>
-      className={styles.timeStamp}
-      style={{left: currentTime * MINUTES_TO_TABLE_PX + TIME_STAMP_OFFSET}}
-    &gt;
+  renderTimeStamp = <span class="fstat-no" title="function not covered" >(c</span>urrentTime, channels) =&gt; {
+    const {position, bodyHeight} = <span class="cstat-no" title="statement not covered" >calculateTimeStampBodyMetrics(currentTime, channels.length);</span>
+<span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;section
-        style={{height: TABLE_ROW_HEIGHT * channels.length}}
-        className={styles.timeStamp__body}/&gt;
-    &lt;/section&gt;
-  );
+        className={styles.timeStamp}
+        style={{left: position}}
+      &gt;
+        &lt;section
+          style={{height: bodyHeight}}
+          className={styles.timeStamp__body}/&gt;
+      &lt;/section&gt;
+    );
+  };
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>nder() {
     const {channels, currentTime} = <span class="cstat-no" title="statement not covered" >this.props;</span>
@@ -400,7 +400,7 @@ export class ProgramTable extends React.PureComponent {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Apr 22 2019 04:52:25 GMT+0300 (Moscow Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Apr 23 2019 23:55:33 GMT+0300 (Moscow Standard Time)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

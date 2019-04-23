@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/containers/app/index.jsx</title>
+    <title>Code coverage report for src/containers/channels/programTable/timeScale/index.jsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/containers/app</a> index.jsx
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">src/containers/channels/programTable/timeScale</a> index.jsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>7/7</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>7/7</span>
       </div>
     </div>
     <p class="quiet">
@@ -97,18 +97,21 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,12 +129,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,54 +161,60 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import {Switch, Route} from 'react-router-dom';
-import cx from 'classnames';
-import {Channels} from '../channels';
-import {ROOT} from '../../routes';
-import {Footer} from '../../components/footer';
-import {Button} from '../../components/button';
-import {HomeIcon, ListIcon, TvIcon, RepeatIcon, UserIcon} from '../../components/icons';
-import styles from './app.css';
+import styles from './timeScale.css';
+import {calculateTimeStampHeaderMetrics} from '../utils';
 &nbsp;
-export class App extends React.PureComponent {
-  renderFooter() {
+export class TimeScale extends React.PureComponent {
+&nbsp;
+  renderTimeStamp() {
+    const {currentTime} = this.props;
+    const {headerPosition, bodyPiecePosition} = calculateTimeStampHeaderMetrics(currentTime);
     return (
-      &lt;Footer className={styles.footer}&gt;
-        &lt;Button className={styles.footerItem}&gt;
-          &lt;HomeIcon/&gt;
-        &lt;/Button&gt;
-        &lt;Button className={styles.footerItem}&gt;
-          &lt;TvIcon/&gt;
-        &lt;/Button&gt;
-        &lt;Button className={cx(styles.footerItem, styles.footerItem__active)}&gt;
-          &lt;ListIcon/&gt;
-        &lt;/Button&gt;
-        &lt;Button className={styles.footerItem}&gt;
-          &lt;RepeatIcon/&gt;
-        &lt;/Button&gt;
-        &lt;Button className={styles.footerItem}&gt;
-          &lt;UserIcon/&gt;
-        &lt;/Button&gt;
-      &lt;/Footer&gt;
+      &lt;&gt;
+        &lt;section
+          style={{left: headerPosition}}
+          className={styles.timeStamp__header}
+          data-item="timeStamp__header"
+        /&gt;
+        &lt;section
+          style={{left: bodyPiecePosition}}
+          className={styles.timeStamp__body}
+          data-item="timeStamp__body"
+        /&gt;
+      &lt;/&gt;
     )
   }
 &nbsp;
   render() {
+    const {times, currentTime} = this.props;
+    const hour = Math.trunc(currentTime / 60);
     return (
-      &lt;main className={styles.container}&gt;
-        &lt;section className={styles.content}&gt;
-          &lt;Switch&gt;
-            &lt;Route
-              exact
-              path={ROOT.pattern}
-              component={Channels}
-            /&gt;
-          &lt;/Switch&gt;
-        &lt;/section&gt;
+      &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th className={styles.timeSlot}/&gt;
         {
-          this.renderFooter()
+          times.map((time, i) =&gt; (
+            &lt;th
+              key={time}
+              className={styles.timeSlot}
+              data-item={`timeSlot-${i}`}
+            &gt;
+              &lt;section
+                className={styles.timeValue}
+              &gt;
+                {time}
+              &lt;/section&gt;
+              &lt;section
+                className={styles.timeTick}
+              /&gt;
+              {
+                i === hour &amp;&amp; this.renderTimeStamp()
+              }
+            &lt;/th&gt;
+          ))
         }
-      &lt;/main&gt;
+      &lt;/tr&gt;
+      &lt;/thead&gt;
     );
   }
 }</pre></td></tr>
@@ -208,7 +226,7 @@ export class App extends React.PureComponent {
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Apr 23 2019 23:55:33 GMT+0300 (Moscow Standard Time)
 </div>
 </div>
-<script src="../../../prettify.js"></script>
+<script src="../../../../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -216,7 +234,7 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../../sorter.js"></script>
-<script src="../../../block-navigation.js"></script>
+<script src="../../../../../sorter.js"></script>
+<script src="../../../../../block-navigation.js"></script>
 </body>
 </html>
